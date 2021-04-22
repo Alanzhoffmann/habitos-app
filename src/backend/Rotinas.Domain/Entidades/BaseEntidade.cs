@@ -5,7 +5,7 @@ namespace Rotinas.Domain.Entidades
     public class BaseEntidade
     {
         public Guid Id { get; }
-        public DateTime CriadoEm { get; }
-        public DateTime AtualizadoEm { get; }
+        public DateTime CriadoEm { get; } = DateTime.Now;
+        public DateTime AtualizadoEm { get; } = DateTime.Now;
     }
 }

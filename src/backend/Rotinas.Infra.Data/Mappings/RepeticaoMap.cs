@@ -7,12 +7,10 @@ namespace Rotinas.Infra.Data.Mappings
 {
     public static class RepeticaoMap
     {
-        public static EntityTypeBuilder<T> OwnsRepeticao<T>(this EntityTypeBuilder<T> builder, Expression<Func<T, Repeticao>> expression) where T : class
+        public static PropertyBuilder<Repeticao> OwnsRepeticao<T>(this EntityTypeBuilder<T> builder, Expression<Func<T, Repeticao>> expression) where T : class
         {
-            builder.Property(expression)
-                .HasConversion(r => r.RetornarValor(), valor => Repeticao.MontarRepeticao(valor));
-
-            return builder;
+            return builder.Property(expression)
+                 .HasConversion(r => r.ParaInt32(), valor => Repeticao.DeInt32(valor));
         }
     }
 }

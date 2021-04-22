@@ -31,6 +31,7 @@ namespace Rotinas.Infra.Data.Repositories
                     t.Id.ToString(),
                     t.Repeticao != null ? (RepeticaoViewModel)t.Repeticao : null,
                     t.IntervaloPossivel != null ? (IntervaloViewModel)t.IntervaloPossivel : null))
+                .AsNoTracking()
                 .ToListAsync(cancellationToken);
         }
     }

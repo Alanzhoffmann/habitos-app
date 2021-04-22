@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Rotinas.Domain.ValueObjects
 {
-    public class Repeticao
+    public record Repeticao
     {
         public Repeticao(DayOfWeek[] diasSemana)
         {
@@ -25,7 +25,7 @@ namespace Rotinas.Domain.ValueObjects
 
         public IReadOnlyCollection<DayOfWeek> DiasSemana { get; }
 
-        public static Repeticao MontarRepeticao(int valor)
+        public static Repeticao DeInt32(int valor)
         {
             var diasSemana = Enum.GetValues<DiaSemana>()
                 .Where(d => ((DiaSemana)valor).HasFlag(d))
@@ -45,7 +45,7 @@ namespace Rotinas.Domain.ValueObjects
             return new Repeticao(diasSemana);
         }
 
-        public int RetornarValor()
+        public int ParaInt32()
         {
             return DiasSemana
                 .Distinct()

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Rotinas.Domain.Entidades;
 
@@ -10,11 +11,10 @@ namespace Rotinas.Infra.Data.Mappings
         {
             builder.HasKey(t => t.Id);
 
-            builder.Property(t => t.CriadoEm)
-                .ValueGeneratedOnAdd();
+            builder.Property(t => t.CriadoEm);
 
             builder.Property(t => t.AtualizadoEm)
-                .ValueGeneratedOnAddOrUpdate();
+                .HasConversion(toProvider => DateTime.Now, fromProvider => fromProvider);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Rotinas.Infra.Data.Mappings
             builder.Property(t => t.Duracao);
 
             builder.OwnsRepeticao(t => t.Repeticao);
+            builder.OwnsIntervaloHorario(t => t.IntervaloPossivel);
         }
     }
 }
