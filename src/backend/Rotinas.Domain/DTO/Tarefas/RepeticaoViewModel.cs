@@ -14,8 +14,13 @@ namespace Rotinas.Domain.DTO
         public bool Sexta { get; private set; }
         public bool Sabado { get; private set; }
 
-        public static explicit operator RepeticaoViewModel(Repeticao repeticao)
+        public static explicit operator RepeticaoViewModel?(Repeticao? repeticao)
         {
+            if (repeticao is null)
+            {
+                return null;
+            }
+
             return new RepeticaoViewModel
             {
                 Domingo = repeticao.DiasSemana.Contains(DayOfWeek.Sunday),
